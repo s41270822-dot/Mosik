@@ -5,301 +5,336 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>month — design studio</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;}
-  :root{--bg:#F4F4EE;--red:#D93248;--dark:#1a1a1a;--gray:#888;--light:#e8e8e0;}
-  html{scroll-behavior:smooth;}
-  body{background:var(--bg);color:var(--dark);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:16px;line-height:1.6;}
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#F4F4EE;--dark:#1e1e1e;--gray:#888;--border:#ddddd6;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--dark);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:15px;line-height:1.6;}
 
-  /* NAV */
-  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);border-bottom:1px solid var(--light);display:flex;align-items:center;justify-content:space-between;padding:0 5vw;height:60px;}
-  .logo{font-size:20px;font-weight:700;letter-spacing:-0.5px;color:var(--red);}
-  .nav-links{display:flex;gap:2rem;list-style:none;}
-  .nav-links a{text-decoration:none;color:var(--dark);font-size:14px;letter-spacing:0.02em;transition:color .2s;}
-  .nav-links a:hover{color:var(--red);}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display:flex;align-items:center;padding:0 40px;height:56px;}
+.logo{font-size:15px;font-weight:400;color:var(--dark);letter-spacing:0.01em;margin-right:48px;white-space:nowrap;}
+.logo strong{font-weight:700;}
+.nav-links{display:flex;gap:2rem;list-style:none;}
+.nav-links a{text-decoration:none;color:var(--dark);font-size:13px;letter-spacing:0.04em;transition:opacity .15s;}
+.nav-links a:hover{opacity:0.45;}
+.nav-sns{display:flex;gap:1.2rem;margin-left:auto;}
+.nav-sns a{text-decoration:none;color:var(--gray);font-size:12px;transition:opacity .15s;}
+.nav-sns a:hover{opacity:0.5;}
 
-  /* HERO */
-  #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 5vw 8vh;padding-top:60px;}
-  .hero-eyebrow{font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-bottom:2rem;}
-  .hero-title{font-size:clamp(3rem,8vw,7rem);font-weight:700;line-height:1;letter-spacing:-0.03em;margin-bottom:2.5rem;}
-  .hero-title span{color:var(--red);}
-  .hero-sub{font-size:16px;color:var(--gray);max-width:420px;margin-bottom:3rem;line-height:1.7;}
-  .hero-cta{display:inline-flex;align-items:center;gap:10px;background:var(--red);color:#fff;text-decoration:none;padding:14px 28px;font-size:14px;font-weight:500;letter-spacing:0.04em;transition:opacity .2s;}
-  .hero-cta:hover{opacity:0.85;}
-  .hero-scroll{position:absolute;bottom:5vh;right:5vw;font-size:12px;color:var(--gray);writing-mode:vertical-rl;letter-spacing:0.1em;}
+/* HERO */
+#hero{height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:56px 40px 56px;}
+.hero-logo-img{width:55%;max-width:820px;mix-blend-mode:multiply;display:block;margin-left:-20px;}
 
-  /* SECTION BASE */
-  section{padding:120px 5vw;}
-  .section-label{font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--red);margin-bottom:1.5rem;}
-  .section-title{font-size:clamp(1.8rem,4vw,3rem);font-weight:700;letter-spacing:-0.02em;margin-bottom:1.5rem;}
-  .divider{width:40px;height:2px;background:var(--red);margin-bottom:3rem;}
+/* WORK */
+#work{padding:100px 40px 0;}
+.section-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--border);}
+.section-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);}
 
-  /* ABOUT */
-  #about{background:#fff;}
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-  .about-text p{font-size:17px;color:#444;line-height:1.85;margin-bottom:1.2rem;}
-  .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:2rem;}
-  .stat-item{border-top:1px solid var(--light);padding-top:1.5rem;}
-  .stat-num{font-size:3rem;font-weight:700;color:var(--red);line-height:1;}
-  .stat-desc{font-size:13px;color:var(--gray);margin-top:4px;letter-spacing:0.03em;}
+.filter-tabs{display:flex;gap:0;border-bottom:1px solid var(--border);}
+.filter-btn{background:none;border:none;padding:13px 20px 13px 0;font-size:12px;color:var(--gray);cursor:pointer;font-family:inherit;letter-spacing:0.05em;transition:color .15s;border-bottom:2px solid transparent;margin-bottom:-1px;}
+.filter-btn:first-child{padding-left:0;}
+.filter-btn.active{color:var(--dark);border-bottom-color:var(--dark);}
+.filter-btn:hover{color:var(--dark);}
 
-  /* PORTFOLIO */
-  #portfolio{background:var(--bg);}
-  .portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
-  .portfolio-item{background:#fff;aspect-ratio:4/3;position:relative;overflow:hidden;cursor:pointer;}
-  .portfolio-item:first-child{grid-column:span 2;aspect-ratio:auto;}
-  .portfolio-thumb{width:100%;height:100%;background:var(--light);display:flex;align-items:center;justify-content:center;transition:transform .4s ease;}
-  .portfolio-item:hover .portfolio-thumb{transform:scale(1.03);}
-  .portfolio-thumb-inner{width:60%;height:60%;background:var(--red);opacity:0.12;}
-  .portfolio-overlay{position:absolute;inset:0;background:rgba(26,26,26,0);display:flex;flex-direction:column;justify-content:flex-end;padding:2rem;transition:background .3s;}
-  .portfolio-item:hover .portfolio-overlay{background:rgba(26,26,26,0.7);}
-  .portfolio-info{transform:translateY(10px);opacity:0;transition:all .3s;}
-  .portfolio-item:hover .portfolio-info{transform:translateY(0);opacity:1;}
-  .portfolio-tag{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--red);margin-bottom:6px;}
-  .portfolio-name{font-size:18px;font-weight:600;color:#fff;}
-  .portfolio-label{position:absolute;top:1.5rem;left:1.5rem;font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;background:var(--bg);color:var(--dark);padding:5px 12px;}
-  /* Placeholder visuals */
-  .p1 .portfolio-thumb{background:#e0dfd8;}
-  .p2 .portfolio-thumb{background:#e8e0d8;}
-  .p3 .portfolio-thumb{background:#d8e0e8;}
-  .p4 .portfolio-thumb{background:#e0d8e8;}
-  .p5 .portfolio-thumb{background:#d8e8e0;}
-  .shape{position:absolute;}
+.work-table{width:100%;border-collapse:collapse;}
+.work-table thead tr{border-bottom:1px solid var(--border);}
+.work-table thead th{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);font-weight:400;padding:12px 0;text-align:left;}
+.work-table thead th:last-child{text-align:right;}
+.work-table tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;}
+.work-table tbody tr:hover{background:rgba(30,30,30,0.03);}
+.work-table tbody tr:hover .work-title{opacity:0.45;}
+.work-table tbody tr.hidden{display:none;}
+.work-table td{padding:20px 0;vertical-align:middle;}
+.work-num{font-size:11px;color:var(--gray);width:40px;}
+.work-title{font-size:15px;font-weight:500;transition:opacity .15s;min-width:200px;}
+.work-client{font-size:13px;color:var(--gray);}
+.work-type{font-size:12px;color:var(--gray);letter-spacing:0.04em;}
+.work-year{font-size:13px;color:var(--gray);}
+.work-status{font-size:11px;color:var(--gray);letter-spacing:0.06em;text-transform:uppercase;}
+.work-arrow{font-size:13px;color:var(--gray);text-align:right;opacity:0;transition:opacity .15s;}
+.work-table tbody tr:hover .work-arrow{opacity:1;}
 
-  /* SERVICES */
-  #services{background:#1a1a1a;color:#fff;}
-  #services .section-title{color:#fff;}
-  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #333;}
-  .service-item{padding:3rem 2rem 3rem 0;border-bottom:1px solid #333;}
-  .service-num{font-size:11px;color:var(--red);font-weight:600;letter-spacing:0.1em;margin-bottom:1.5rem;}
-  .service-name{font-size:20px;font-weight:600;margin-bottom:1rem;}
-  .service-desc{font-size:14px;color:#888;line-height:1.7;}
+/* ABOUT */
+#about{padding:120px 40px;}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
+.about-left .lbl{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);margin-bottom:40px;display:block;}
+.about-left h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;}
+.about-right p{font-size:16px;color:#555;line-height:1.85;margin-bottom:1.2rem;}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:60px;padding-top:40px;border-top:1px solid var(--border);grid-column:span 2;}
+.stat-item .num{font-size:2.6rem;font-weight:700;color:var(--dark);line-height:1;}
+.stat-item .desc{font-size:11px;color:var(--gray);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase;}
 
-  /* CONTACT */
-  #contact{background:var(--bg);}
-  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;}
-  .contact-text p{font-size:17px;color:#555;line-height:1.8;margin-bottom:2rem;}
-  .contact-email{font-size:clamp(1.2rem,3vw,2rem);font-weight:700;color:var(--red);text-decoration:none;letter-spacing:-0.02em;}
-  .contact-email:hover{text-decoration:underline;}
-  .contact-form{display:flex;flex-direction:column;gap:1.2rem;}
-  .form-field{display:flex;flex-direction:column;gap:6px;}
-  .form-field label{font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);}
-  .form-field input,.form-field textarea{background:transparent;border:none;border-bottom:1px solid #ccc;padding:10px 0;font-size:15px;color:var(--dark);font-family:inherit;outline:none;transition:border-color .2s;}
-  .form-field input:focus,.form-field textarea:focus{border-color:var(--red);}
-  .form-field textarea{resize:none;height:100px;}
-  .form-submit{margin-top:0.5rem;background:var(--red);color:#fff;border:none;padding:14px 32px;font-size:14px;font-weight:500;letter-spacing:0.08em;cursor:pointer;transition:opacity .2s;text-transform:uppercase;width:fit-content;}
-  .form-submit:hover{opacity:0.85;}
+/* SERVICES */
+#services{padding:0 40px 120px;}
+.services-title-row{padding:20px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.service-row{display:grid;grid-template-columns:40px 220px 1fr 100px;align-items:start;padding:28px 0;border-bottom:1px solid var(--border);}
+.svc-num{font-size:11px;color:var(--gray);padding-top:3px;}
+.svc-name{font-size:16px;font-weight:500;}
+.svc-desc{font-size:13px;color:var(--gray);line-height:1.75;max-width:400px;}
+.svc-tag{font-size:11px;color:var(--gray);text-align:right;letter-spacing:0.06em;text-transform:uppercase;padding-top:3px;}
 
-  /* FOOTER */
-  footer{background:#111;color:#555;padding:2rem 5vw;display:flex;justify-content:space-between;align-items:center;font-size:13px;}
-  footer .logo{color:var(--red);font-size:16px;}
-  .footer-sns{display:flex;gap:1.5rem;}
-  .footer-sns a{color:#555;text-decoration:none;transition:color .2s;}
-  .footer-sns a:hover{color:var(--red);}
+/* CONTACT */
+#contact{background:#fff;padding:120px 40px;}
+.contact-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:80px;}
+.contact-heading{font-size:clamp(2rem,5vw,4rem);font-weight:700;letter-spacing:-0.04em;line-height:1.1;}
+.contact-info{text-align:right;}
+.contact-info p{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
+.contact-info a,.contact-info span{font-size:14px;color:var(--dark);text-decoration:none;display:block;line-height:2;}
+.contact-info a:hover{opacity:0.5;}
+.contact-form{border-top:1px solid var(--border);padding-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+.form-field{display:flex;flex-direction:column;gap:8px;}
+.form-field label{font-size:11px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gray);}
+.form-field input,.form-field textarea{background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:14px;color:var(--dark);font-family:inherit;outline:none;transition:border-color .2s;}
+.form-field input:focus,.form-field textarea:focus{border-bottom-color:var(--dark);}
+.form-field textarea{resize:none;height:88px;}
+.form-field.full{grid-column:span 2;}
+.form-submit{grid-column:span 2;justify-self:start;margin-top:8px;background:var(--dark);color:#fff;border:none;padding:13px 32px;font-size:11px;font-weight:500;letter-spacing:0.12em;cursor:pointer;transition:opacity .2s;text-transform:uppercase;}
+.form-submit:hover{opacity:0.7;}
 
-  @media(max-width:768px){
-    .about-grid,.contact-grid{grid-template-columns:1fr;}
-    .portfolio-grid{grid-template-columns:1fr;}
-    .portfolio-item:first-child{grid-column:1;}
-    .services-grid{grid-template-columns:1fr;}
-  }
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;}
+.footer-logo{font-size:13px;font-weight:700;color:var(--dark);}
+.footer-copy{font-size:11px;color:var(--gray);text-align:center;}
+.footer-links{display:flex;gap:20px;justify-content:flex-end;}
+.footer-links a{font-size:11px;color:var(--gray);text-decoration:none;transition:opacity .15s;}
+.footer-links a:hover{opacity:0.5;}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .nav-links{display:none;}
+  #hero,#work,#about,#services,#contact,footer{padding-left:20px;padding-right:20px;}
+  .hero-title{font-size:clamp(4rem,18vw,7rem);}
+  .about-grid{grid-template-columns:1fr;}
+  .about-stats{grid-column:1;grid-template-columns:1fr 1fr;}
+  .service-row{grid-template-columns:28px 1fr;row-gap:6px;}
+  .svc-desc,.svc-tag{grid-column:2;}
+  .contact-top{flex-direction:column;gap:40px;}
+  .contact-info{text-align:left;}
+  .contact-form{grid-template-columns:1fr;}
+  .form-field.full,.form-submit{grid-column:1;}
+  footer{grid-template-columns:1fr 1fr;}
+  .footer-copy{display:none;}
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">month</div>
+  <div class="logo">STUDIO <strong>Mosik.</strong></div>
   <ul class="nav-links">
-    <li><a href="#about">about</a></li>
-    <li><a href="#portfolio">work</a></li>
-    <li><a href="#services">services</a></li>
-    <li><a href="#contact">contact</a></li>
+    <li><a href="#work">WORK</a></li>
+    <li><a href="#about">ABOUT</a></li>
+    <li><a href="#services">SERVICES</a></li>
+    <li><a href="#contact">CONTACT</a></li>
   </ul>
+  <div class="nav-sns">
+    <a href="#">ins.</a>
+    <a href="#">beh.</a>
+    <a href="#">lin.</a>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section id="hero" style="position:relative;">
-  <p class="hero-eyebrow">Design Studio — Seoul, Korea</p>
-  <h1 class="hero-title">We design<br><span>moments</span><br>that last.</h1>
-  <p class="hero-sub">브랜드의 본질을 시각 언어로 번역합니다. 전략적 사고와 감각적 디자인의 교차점에서 month가 시작됩니다.</p>
-  <a href="#portfolio" class="hero-cta">View our work →</a>
-  <div class="hero-scroll">scroll</div>
+<section id="hero">
+  <img class="hero-logo-img" src="Mosik_LOGO.png" alt="Mosik."/>
+</section>
+
+<!-- WORK -->
+<section id="work">
+  <div class="section-header">
+    <span class="section-label">Selected work</span>
+  </div>
+  <div class="filter-tabs">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="brand">Brand Identity</button>
+    <button class="filter-btn" data-filter="digital">Digital</button>
+    <button class="filter-btn" data-filter="print">Print</button>
+    <button class="filter-btn" data-filter="spatial">Spatial</button>
+  </div>
+  <table class="work-table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Project</th>
+        <th>Client</th>
+        <th>Type</th>
+        <th>Year</th>
+        <th>Status</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr data-type="brand">
+        <td class="work-num">01</td>
+        <td class="work-title">ARC Beauty Lab</td>
+        <td class="work-client">ARC</td>
+        <td class="work-type">Brand Identity</td>
+        <td class="work-year">2025</td>
+        <td class="work-status">완료</td>
+        <td class="work-arrow">→</td>
+      </tr>
+      <tr data-type="print">
+        <td class="work-num">02</td>
+        <td class="work-title">KAYA Skincare</td>
+        <td class="work-client">KAYA</td>
+        <td class="work-type">Packaging</td>
+        <td class="work-year">2025</td>
+        <td class="work-status">완료</td>
+        <td class="work-arrow">→</td>
+      </tr>
+      <tr data-type="print">
+        <td class="work-num">03</td>
+        <td class="work-title">Folio Magazine</td>
+        <td class="work-client">Folio</td>
+        <td class="work-type">Editorial</td>
+        <td class="work-year">2024</td>
+        <td class="work-status">완료</td>
+        <td class="work-arrow">→</td>
+      </tr>
+      <tr data-type="digital">
+        <td class="work-num">04</td>
+        <td class="work-title">Triad Fund</td>
+        <td class="work-client">Triad</td>
+        <td class="work-type">Digital</td>
+        <td class="work-year">2024</td>
+        <td class="work-status">완료</td>
+        <td class="work-arrow">→</td>
+      </tr>
+      <tr data-type="spatial">
+        <td class="work-num">05</td>
+        <td class="work-title">Grid Gallery</td>
+        <td class="work-client">Grid</td>
+        <td class="work-type">Spatial</td>
+        <td class="work-year">2024</td>
+        <td class="work-status">완료</td>
+        <td class="work-arrow">→</td>
+      </tr>
+      <tr data-type="brand">
+        <td class="work-num">06</td>
+        <td class="work-title">Noma Branding</td>
+        <td class="work-client">Noma Co.</td>
+        <td class="work-type">Brand Identity</td>
+        <td class="work-year">2023</td>
+        <td class="work-status">완료</td>
+        <td class="work-arrow">→</td>
+      </tr>
+      <tr data-type="digital">
+        <td class="work-num">07</td>
+        <td class="work-title">Volta Campaign</td>
+        <td class="work-client">Volta</td>
+        <td class="work-type">Digital</td>
+        <td class="work-year">2023</td>
+        <td class="work-status">완료</td>
+        <td class="work-arrow">→</td>
+      </tr>
+    </tbody>
+  </table>
 </section>
 
 <!-- ABOUT -->
 <section id="about">
-  <p class="section-label">about us</p>
   <div class="about-grid">
-    <div class="about-text">
-      <h2 class="section-title">매달 새로운<br>시각을 제안합니다.</h2>
-      <div class="divider"></div>
-      <p>month는 브랜드 아이덴티티, 디지털 경험, 공간 그래픽을 아우르는 크리에이티브 스튜디오입니다. 우리는 클라이언트의 이야기를 기억에 남는 비주얼 언어로 만듭니다.</p>
+    <div class="about-left">
+      <span class="lbl">About</span>
+      <h2>매달 새로운<br>시각을<br>제안합니다.</h2>
+    </div>
+    <div class="about-right">
+      <p>month는 브랜드 아이덴티티, 디지털 경험, 출판 디자인을 아우르는 크리에이티브 스튜디오입니다.</p>
       <p>단순함 속에 힘이 있다고 믿습니다. 불필요한 것을 걷어내고 핵심만 남겼을 때 진짜 디자인이 시작됩니다.</p>
+      <p>서울을 기반으로 전 세계 클라이언트와 협업합니다.</p>
     </div>
     <div class="about-stats">
-      <div class="stat-item"><div class="stat-num">7+</div><div class="stat-desc">Years of experience</div></div>
-      <div class="stat-item"><div class="stat-num">120</div><div class="stat-desc">Projects delivered</div></div>
-      <div class="stat-item"><div class="stat-num">40+</div><div class="stat-desc">Brand identities</div></div>
-      <div class="stat-item"><div class="stat-num">98%</div><div class="stat-desc">Client satisfaction</div></div>
-    </div>
-  </div>
-</section>
-
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <p class="section-label">selected work</p>
-  <h2 class="section-title">Our Projects</h2>
-  <div class="divider"></div>
-  <div class="portfolio-grid">
-    <div class="portfolio-item p1" style="min-height:400px;">
-      <div class="portfolio-thumb" style="min-height:400px;">
-        <svg width="100%" height="100%" viewBox="0 0 600 400" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="600" height="400" fill="#e8e7e0"/>
-          <rect x="60" y="80" width="200" height="240" fill="#D93248" opacity="0.9"/>
-          <rect x="290" y="140" width="260" height="160" fill="#1a1a1a" opacity="0.08"/>
-          <text x="70" y="180" font-family="Helvetica Neue,sans-serif" font-size="48" font-weight="700" fill="#F4F4EE" opacity="0.95">ARC</text>
-          <text x="70" y="230" font-family="Helvetica Neue,sans-serif" font-size="14" fill="#F4F4EE" opacity="0.7" letter-spacing="4">BEAUTY LAB</text>
-        </svg>
-      </div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-info">
-          <p class="portfolio-tag">Brand Identity</p>
-          <p class="portfolio-name">ARC Beauty Lab</p>
-        </div>
-      </div>
-      <span class="portfolio-label">Featured</span>
-    </div>
-    <div class="portfolio-item p2">
-      <div class="portfolio-thumb">
-        <svg width="100%" height="100%" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="300" height="300" fill="#ede8e0"/>
-          <circle cx="150" cy="150" r="80" fill="none" stroke="#D93248" stroke-width="2"/>
-          <circle cx="150" cy="150" r="50" fill="#1a1a1a"/>
-          <text x="150" y="158" font-family="Helvetica Neue,sans-serif" font-size="14" fill="#F4F4EE" text-anchor="middle" letter-spacing="3">KAYA</text>
-        </svg>
-      </div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-info">
-          <p class="portfolio-tag">Packaging</p>
-          <p class="portfolio-name">KAYA Skincare</p>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-item p3">
-      <div class="portfolio-thumb">
-        <svg width="100%" height="100%" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="300" height="300" fill="#dce5ee"/>
-          <rect x="40" y="100" width="220" height="3" fill="#D93248"/>
-          <rect x="40" y="140" width="140" height="3" fill="#1a1a1a" opacity="0.3"/>
-          <rect x="40" y="160" width="180" height="3" fill="#1a1a1a" opacity="0.2"/>
-          <rect x="40" y="180" width="100" height="3" fill="#1a1a1a" opacity="0.15"/>
-          <text x="40" y="90" font-family="Helvetica Neue,sans-serif" font-size="28" font-weight="700" fill="#1a1a1a">FOLIO</text>
-        </svg>
-      </div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-info">
-          <p class="portfolio-tag">Editorial</p>
-          <p class="portfolio-name">Folio Magazine</p>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-item p4">
-      <div class="portfolio-thumb">
-        <svg width="100%" height="100%" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="300" height="300" fill="#e5dff0"/>
-          <polygon points="150,60 240,210 60,210" fill="none" stroke="#D93248" stroke-width="2"/>
-          <polygon points="150,90 215,200 85,200" fill="#D93248" opacity="0.15"/>
-          <text x="150" y="250" font-family="Helvetica Neue,sans-serif" font-size="12" fill="#1a1a1a" text-anchor="middle" letter-spacing="5" opacity="0.6">TRIAD FUND</text>
-        </svg>
-      </div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-info">
-          <p class="portfolio-tag">Digital</p>
-          <p class="portfolio-name">Triad Fund</p>
-        </div>
-      </div>
-    </div>
-    <div class="portfolio-item p5">
-      <div class="portfolio-thumb">
-        <svg width="100%" height="100%" viewBox="0 0 300 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-          <rect width="300" height="300" fill="#d8ede5"/>
-          <rect x="60" y="60" width="80" height="80" fill="#D93248"/>
-          <rect x="160" y="60" width="80" height="80" fill="#1a1a1a" opacity="0.12"/>
-          <rect x="60" y="160" width="80" height="80" fill="#1a1a1a" opacity="0.08"/>
-          <rect x="160" y="160" width="80" height="80" fill="#D93248" opacity="0.4"/>
-        </svg>
-      </div>
-      <div class="portfolio-overlay">
-        <div class="portfolio-info">
-          <p class="portfolio-tag">Spatial</p>
-          <p class="portfolio-name">Grid Gallery</p>
-        </div>
-      </div>
+      <div class="stat-item"><div class="num">7+</div><div class="desc">Years of experience</div></div>
+      <div class="stat-item"><div class="num">120</div><div class="desc">Projects delivered</div></div>
+      <div class="stat-item"><div class="num">40+</div><div class="desc">Brand identities</div></div>
     </div>
   </div>
 </section>
 
 <!-- SERVICES -->
 <section id="services">
-  <p class="section-label" style="color:var(--red);">what we do</p>
-  <h2 class="section-title">Services</h2>
-  <div class="divider"></div>
-  <div class="services-grid">
-    <div class="service-item">
-      <p class="service-num">01</p>
-      <h3 class="service-name">Brand Identity</h3>
-      <p class="service-desc">로고, 컬러 시스템, 타이포그래피, 브랜드 가이드라인까지 — 브랜드의 첫인상과 일관성을 설계합니다.</p>
-    </div>
-    <div class="service-item">
-      <p class="service-num">02</p>
-      <h3 class="service-name">Digital Design</h3>
-      <p class="service-desc">웹사이트, 앱 UI/UX, 모션 그래픽. 사용자가 경험하는 모든 화면을 세심하게 디자인합니다.</p>
-    </div>
-    <div class="service-item">
-      <p class="service-num">03</p>
-      <h3 class="service-name">Print & Packaging</h3>
-      <p class="service-desc">책, 잡지, 패키지 디자인. 손에 쥐었을 때 완성되는 감각적인 물성의 디자인을 만듭니다.</p>
-    </div>
+  <div class="services-title-row">
+    <span class="section-label">Services</span>
+  </div>
+  <div class="service-row">
+    <span class="svc-num">01</span>
+    <span class="svc-name">Brand Identity</span>
+    <span class="svc-desc">로고, 컬러 시스템, 타이포그래피, 브랜드 가이드라인까지 — 브랜드의 첫인상과 일관성을 설계합니다.</span>
+    <span class="svc-tag">Branding</span>
+  </div>
+  <div class="service-row">
+    <span class="svc-num">02</span>
+    <span class="svc-name">Digital Design</span>
+    <span class="svc-desc">웹사이트, 앱 UI/UX, 모션 그래픽. 사용자가 경험하는 모든 화면을 세심하게 디자인합니다.</span>
+    <span class="svc-tag">Digital</span>
+  </div>
+  <div class="service-row">
+    <span class="svc-num">03</span>
+    <span class="svc-name">Print & Packaging</span>
+    <span class="svc-desc">책, 잡지, 패키지 디자인. 손에 쥐었을 때 완성되는 감각적인 물성의 디자인을 만듭니다.</span>
+    <span class="svc-tag">Print</span>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <p class="section-label">get in touch</p>
-  <div class="contact-grid">
-    <div>
-      <h2 class="section-title">함께 만들어<br>볼까요?</h2>
-      <div class="divider"></div>
-      <p class="contact-text"><p style="font-size:17px;color:#555;line-height:1.8;margin-bottom:2rem;">새로운 프로젝트, 협업 제안, 혹은 단순한 인사도 환영합니다. 어떤 이야기든 들을 준비가 되어 있습니다.</p></p>
-      <a href="mailto:hello@month.studio" class="contact-email">hello@month.studio</a>
-      <p style="margin-top:2rem;font-size:13px;color:var(--gray);">Seoul, Korea · Remote worldwide</p>
+  <div class="contact-top">
+    <h2 class="contact-heading">함께<br>만들어볼까요?<br>hello@month.studio</h2>
+    <div class="contact-info">
+      <p>Location</p>
+      <span>Seoul, Korea</span>
+      <span>Remote worldwide</span>
+      <p style="margin-top:24px;">Follow</p>
+      <a href="#">Instagram</a>
+      <a href="#">Behance</a>
+      <a href="#">LinkedIn</a>
     </div>
-    <div class="contact-form">
-      <div class="form-field">
-        <label>Name</label>
-        <input type="text" placeholder="홍길동"/>
-      </div>
-      <div class="form-field">
-        <label>Email</label>
-        <input type="email" placeholder="hello@yourcompany.com"/>
-      </div>
-      <div class="form-field">
-        <label>Project brief</label>
-        <textarea placeholder="어떤 프로젝트를 구상 중이신가요?"></textarea>
-      </div>
-      <button class="form-submit">Send message</button>
+  </div>
+  <div class="contact-form">
+    <div class="form-field">
+      <label>Name</label>
+      <input type="text" placeholder="홍길동"/>
     </div>
+    <div class="form-field">
+      <label>Email</label>
+      <input type="email" placeholder="hello@yourcompany.com"/>
+    </div>
+    <div class="form-field full">
+      <label>Project brief</label>
+      <textarea placeholder="어떤 프로젝트를 구상 중이신가요?"></textarea>
+    </div>
+    <button class="form-submit">Send message</button>
   </div>
 </section>
 
 <footer>
-  <div class="logo">month</div>
-  <span>© 2025 month studio. All rights reserved.</span>
-  <div class="footer-sns">
-    <a href="#">Instagram</a>
-    <a href="#">Behance</a>
-    <a href="#">LinkedIn</a>
+  <div class="footer-logo">STUDIO Mosik.</div>
+  <div class="footer-copy">© 2025 month studio. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#">ins.</a>
+    <a href="#">beh.</a>
+    <a href="#">lin.</a>
   </div>
 </footer>
 
+<script>
+const btns = document.querySelectorAll('.filter-btn');
+const rows = document.querySelectorAll('.work-table tbody tr');
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    btns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    rows.forEach(r => r.classList.toggle('hidden', f !== 'all' && r.dataset.type !== f));
+    let n = 1;
+    rows.forEach(r => {
+      if(!r.classList.contains('hidden')){
+        r.querySelector('.work-num').textContent = String(n).padStart(2,'0');
+        n++;
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
