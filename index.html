@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>month — design studio</title>
 <style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
 *{margin:0;padding:0;box-sizing:border-box;}
 :root{--bg:#F4F4EE;--dark:#1e1e1e;--gray:#888;--border:#ddddd6;}
 html{scroll-behavior:smooth;}
@@ -41,7 +42,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 .work-thumb input{display:none;}
 .work-overlay{position:absolute;inset:0;background:rgba(30,30,26,0);display:flex;align-items:center;justify-content:center;transition:background .25s;pointer-events:none;}
 .work-card:hover .work-overlay{background:rgba(30,30,26,0.45);}
-.work-overlay span{color:#fff;font-size:13px;letter-spacing:0.08em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:all .25s;}
+.work-overlay span{color:#fff;letter-spacing:0.02em;opacity:0;transform:translateY(6px);transition:all .25s;text-align:center;line-height:1.6;font-family:'Pretendard',sans-serif;}
+.work-overlay .ov-title{display:block;font-size:14px;font-weight:700;}
+.work-overlay .ov-sub{display:block;font-size:12px;font-weight:500;margin-top:2px;color:rgba(255,255,255,0.85);}
 .work-card:hover .work-overlay span{opacity:1;transform:translateY(0);}
 
 /* ABOUT */
@@ -103,10 +106,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
     <div class="work-card" data-idx="0">
       <div class="work-thumb">
         <img src="Gemini_Generated_Image_ur8m0lur8m0lur8m.png" alt="ARC Beauty Lab"/>
-        <div class="work-overlay"><span>ARC Beauty Lab</span></div>
-      </div>
-    </div>
-    <div class="work-card" data-idx="1">
+        <div class="work-overlay"><span><em class="ov-title">Treasure Trove - 先祖의 것</em><em class="ov-sub">수성못 MOTI</em></span></div>
       <label class="work-thumb">
         <div class="work-thumb-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
