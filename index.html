@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>month — design studio</title>
+<title>Mosik — design studio</title>
 <style>
 @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
 *{margin:0;padding:0;box-sizing:border-box;}
@@ -32,7 +32,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 .section-header{display:flex;align-items:center;justify-content:space-between;padding-bottom:16px;border-bottom:1px solid var(--border);margin-bottom:40px;}
 .section-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);}
 
-.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.work-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;width:100%;}
 .work-card{cursor:pointer;}
 .work-thumb{position:relative;width:100%;aspect-ratio:16/10;background:#e4e3db;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .work-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -43,16 +43,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 .work-overlay{position:absolute;inset:0;background:rgba(30,30,26,0);display:flex;align-items:center;justify-content:center;transition:background .25s;pointer-events:none;}
 .work-card:hover .work-overlay{background:rgba(30,30,26,0.45);}
 .work-overlay span{color:#fff;letter-spacing:0.02em;opacity:0;transform:translateY(6px);transition:all .25s;text-align:center;line-height:1.6;font-family:'Pretendard',sans-serif;}
-.work-overlay .ov-title{display:block;font-size:14px;font-weight:700;}
-.work-overlay .ov-sub{display:block;font-size:12px;font-weight:500;margin-top:2px;color:rgba(255,255,255,0.85);}
 .work-card:hover .work-overlay span{opacity:1;transform:translateY(0);}
-
-/* ABOUT */
-#about{padding:120px 40px;}
-.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:start;}
-.about-left .lbl{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gray);margin-bottom:40px;display:block;}
-.about-left h2{font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;letter-spacing:-0.03em;line-height:1.2;}
-.about-right p{font-size:16px;color:#555;line-height:1.85;margin-bottom:1.2rem;}
+.ov-title{display:block;font-size:14px;font-weight:700;font-style:normal;}
+.ov-sub{display:block;font-size:12px;font-weight:500;font-style:normal;margin-top:2px;color:rgba(255,255,255,0.85);}
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;}
@@ -67,12 +60,11 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
 @media(max-width:768px){
   nav{padding:0 20px;}
   .nav-links{display:none;}
-  #hero,#work,#about,footer{padding-left:20px;padding-right:20px;}
+  #hero,#work,footer{padding-left:20px;padding-right:20px;}
   .hero-logo-img{width:75%;}
   .work-grid{grid-template-columns:1fr;gap:0;}
-  .about-grid{grid-template-columns:1fr;}
   footer{grid-template-columns:1fr 1fr;}
-  .footer-copy{display:none;}
+  .footer-info{display:none;}
 }
 </style>
 </head>
@@ -86,7 +78,7 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
     <li><a href="#contact">CONTACT</a></li>
   </ul>
   <div class="nav-sns">
-    <a href="#">ins.</a>
+    <a href="https://www.instagram.com/__mosik/" target="_blank">ins.</a>
     <a href="https://www.behance.net/6870b70a" target="_blank">beh.</a>
     <a href="https://vimeo.com/user161968144" target="_blank">vim.</a>
   </div>
@@ -103,19 +95,26 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
     <span class="section-label">Selected work</span>
   </div>
   <div class="work-grid" id="workGrid">
+
     <div class="work-card" data-idx="0">
-      <div class="work-thumb">
-        <img src="Gemini_Generated_Image_ur8m0lur8m0lur8m.png" alt="ARC Beauty Lab"/>
+      <label class="work-thumb">
+        <img src="Gemini_Generated_Image_ur8m0lur8m0lur8m.png" alt="Treasure Trove"/>
+        <input type="file" accept="image/*" class="work-upload"/>
         <div class="work-overlay"><span><em class="ov-title">Treasure Trove - 先祖의 것</em><em class="ov-sub">수성못 MOTI</em></span></div>
+      </label>
+    </div>
+
+    <div class="work-card" data-idx="1">
       <label class="work-thumb">
         <div class="work-thumb-placeholder">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
-        <div class="work-overlay"><span>KAYA Skincare</span></div>
+        <div class="work-overlay"><span><em class="ov-title">KAYA Skincare</em></span></div>
       </label>
     </div>
+
     <div class="work-card" data-idx="2">
       <label class="work-thumb">
         <div class="work-thumb-placeholder">
@@ -123,9 +122,10 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
-        <div class="work-overlay"><span>Folio Magazine</span></div>
+        <div class="work-overlay"><span><em class="ov-title">Folio Magazine</em></span></div>
       </label>
     </div>
+
     <div class="work-card" data-idx="3">
       <label class="work-thumb">
         <div class="work-thumb-placeholder">
@@ -133,9 +133,10 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
-        <div class="work-overlay"><span>Triad Fund</span></div>
+        <div class="work-overlay"><span><em class="ov-title">Triad Fund</em></span></div>
       </label>
     </div>
+
     <div class="work-card" data-idx="4">
       <label class="work-thumb">
         <div class="work-thumb-placeholder">
@@ -143,9 +144,10 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
-        <div class="work-overlay"><span>Grid Gallery</span></div>
+        <div class="work-overlay"><span><em class="ov-title">Grid Gallery</em></span></div>
       </label>
     </div>
+
     <div class="work-card" data-idx="5">
       <label class="work-thumb">
         <div class="work-thumb-placeholder">
@@ -153,9 +155,10 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
           <span>이미지 업로드</span>
         </div>
         <input type="file" accept="image/*" class="work-upload"/>
-        <div class="work-overlay"><span>Noma Branding</span></div>
+        <div class="work-overlay"><span><em class="ov-title">Noma Branding</em></span></div>
       </label>
     </div>
+
   </div>
 </section>
 
@@ -167,8 +170,8 @@ footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-te
   </div>
   <div class="footer-links">
     <a href="https://www.instagram.com/__mosik/" target="_blank">ins.</a>
-    <a href="#">beh.</a>
-    <a href="#">lin.</a>
+    <a href="https://www.behance.net/6870b70a" target="_blank">beh.</a>
+    <a href="https://vimeo.com/user161968144" target="_blank">vim.</a>
   </div>
 </footer>
 
