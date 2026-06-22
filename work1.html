@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>수성못 MOTI — Mosik</title>
+<style>
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css');
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--bg:#F4F4EE;--dark:#1e1e1e;--gray:#888;--border:#ddddd6;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--dark);font-family:'Pretendard','Helvetica Neue',sans-serif;font-size:15px;line-height:1.6;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display:flex;align-items:center;padding:0 40px;height:56px;border-bottom:1px solid var(--border);}
+.logo{font-size:15px;font-weight:400;color:var(--dark);text-decoration:none;white-space:nowrap;}
+.logo strong{font-weight:700;}
+.nav-back{margin-left:auto;font-size:12px;color:var(--gray);text-decoration:none;letter-spacing:0.08em;transition:opacity .15s;}
+.nav-back:hover{opacity:0.5;}
+
+/* HERO */
+#hero{height:100vh;position:relative;display:flex;align-items:flex-end;justify-content:center;padding-bottom:60px;overflow:hidden;background:#e4e3db;}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,20,20,0.45);}
+.hero-date{position:absolute;top:80px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:0.2em;color:rgba(255,255,255,0.7);text-align:center;}
+.hero-text{position:relative;z-index:1;text-align:center;}
+.hero-title{font-size:clamp(2rem,6vw,5rem);font-weight:700;color:#fff;letter-spacing:-0.02em;line-height:1.1;margin-bottom:16px;}
+.hero-client{font-size:13px;letter-spacing:0.2em;color:rgba(255,255,255,0.7);text-transform:uppercase;}
+.hero-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:13px;letter-spacing:0.05em;}
+
+/* DESCRIPTION */
+#description{padding:100px 40px;}
+.desc-inner{max-width:800px;margin:0 auto;}
+.desc-ko{font-size:17px;line-height:1.9;color:var(--dark);margin-bottom:2rem;border-left:2px solid var(--dark);padding-left:24px;}
+.desc-en{font-size:14px;line-height:1.9;color:var(--gray);border-left:2px solid var(--border);padding-left:24px;}
+.desc-placeholder{height:80px;background:#e4e3db;border-radius:2px;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:12px;letter-spacing:0.05em;}
+
+/* VIDEO */
+#video-section{padding:0 40px 80px;}
+.video-inner{max-width:960px;margin:0 auto;}
+.video-wrap{width:100%;aspect-ratio:16/9;background:#1e1e1e;display:flex;align-items:center;justify-content:center;color:#555;font-size:13px;letter-spacing:0.05em;}
+
+/* GALLERY */
+#gallery{padding:0 40px 100px;}
+.gallery-section{max-width:960px;margin:0 auto 80px;}
+.gallery-section-title{font-size:13px;font-weight:700;letter-spacing:0.05em;margin-bottom:24px;text-align:center;}
+.gallery-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:4px;margin-bottom:4px;}
+.gallery-grid-1{display:grid;grid-template-columns:1fr;gap:4px;}
+.gallery-img{width:100%;aspect-ratio:16/9;background:#e4e3db;object-fit:cover;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:12px;}
+.gallery-img-tall{aspect-ratio:4/3;}
+.img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:12px;letter-spacing:0.05em;background:#e4e3db;}
+
+/* CREDITS */
+#credits{padding:80px 40px;border-top:1px solid var(--border);}
+.credits-inner{max-width:500px;margin:0 auto;text-align:center;}
+.credits-title{font-size:13px;font-weight:700;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:48px;}
+.credit-row{margin-bottom:28px;}
+.credit-label{font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+.credit-value{font-size:14px;color:var(--dark);}
+.credit-placeholder{height:16px;background:#e4e3db;border-radius:2px;width:60%;margin:6px auto 0;}
+
+/* BOTTOM NAV */
+.bottom-nav{padding:40px;display:flex;align-items:center;justify-content:center;gap:24px;border-top:1px solid var(--border);}
+.btn-list{display:inline-block;padding:12px 40px;border:1px solid var(--dark);font-size:13px;color:var(--dark);text-decoration:none;letter-spacing:0.06em;transition:all .2s;}
+.btn-list:hover{background:var(--dark);color:#fff;}
+.btn-arrow{font-size:20px;color:var(--gray);text-decoration:none;transition:opacity .15s;padding:12px;}
+.btn-arrow:hover{opacity:0.5;}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">STUDIO <strong>Mosik.</strong></a>
+  <a href="index.html" class="nav-back">← Back to list</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-placeholder">이미지를 추가해주세요</div>
+  <div class="hero-overlay"></div>
+  <p class="hero-date">2024</p>
+  <div class="hero-text">
+    <h1 class="hero-title">Treasure Trove<br>先祖의 것</h1>
+    <p class="hero-client">수성못 MOTI</p>
+  </div>
+</section>
+
+<!-- DESCRIPTION -->
+<section id="description">
+  <div class="desc-inner">
+    <div class="desc-ko desc-placeholder">한국어 설명 텍스트</div>
+    <div class="desc-en desc-placeholder" style="margin-top:16px;">English description text</div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section id="video-section">
+  <div class="video-inner">
+    <div class="video-wrap">영상을 추가해주세요 (Vimeo / YouTube)</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="gallery-section">
+    <p class="gallery-section-title">Gallery</p>
+    <div class="gallery-grid-2">
+      <div class="img-placeholder">이미지 1</div>
+      <div class="img-placeholder">이미지 2</div>
+    </div>
+    <div class="gallery-grid-1">
+      <div class="img-placeholder" style="aspect-ratio:21/9;">이미지 3</div>
+    </div>
+    <div class="gallery-grid-2" style="margin-top:4px;">
+      <div class="img-placeholder">이미지 4</div>
+      <div class="img-placeholder">이미지 5</div>
+    </div>
+  </div>
+</section>
+
+<!-- CREDITS -->
+<section id="credits">
+  <div class="credits-inner">
+    <p class="credits-title">Credits</p>
+    <div class="credit-row">
+      <p class="credit-label">Client</p>
+      <div class="credit-placeholder"></div>
+    </div>
+    <div class="credit-row">
+      <p class="credit-label">Project Manager</p>
+      <div class="credit-placeholder"></div>
+    </div>
+    <div class="credit-row">
+      <p class="credit-label">Creative Director</p>
+      <div class="credit-placeholder"></div>
+    </div>
+    <div class="credit-row">
+      <p class="credit-label">Design & Direction</p>
+      <div class="credit-placeholder"></div>
+    </div>
+    <div class="credit-row">
+      <p class="credit-label">Year</p>
+      <div class="credit-placeholder" style="width:30%;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM NAV -->
+<div class="bottom-nav">
+  <a href="#" class="btn-arrow">←</a>
+  <a href="index.html" class="btn-list">List</a>
+  <a href="#" class="btn-arrow">→</a>
+</div>
+
+</body>
+</html>
