@@ -43,12 +43,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--bg);display
 .work-thumb-placeholder svg{width:28px;height:28px;opacity:0.5;}
 .work-thumb-placeholder span{font-size:11px;letter-spacing:0.05em;}
 .work-thumb input{display:none;}
-.work-overlay{position:absolute;inset:0;background:rgba(30,30,26,0);display:flex;align-items:center;justify-content:center;transition:background .25s;pointer-events:none;}
-.work-card:hover .work-overlay{background:rgba(30,30,26,0.45);}
-.work-overlay span{color:#fff;letter-spacing:0.02em;opacity:0;transform:translateY(6px);transition:all .25s;text-align:center;line-height:1.6;font-family:'Pretendard',sans-serif;}
-.work-card:hover .work-overlay span{opacity:1;transform:translateY(0);}
-.ov-title{display:block;font-size:14px;font-weight:700;font-style:normal;}
-.ov-sub{display:block;font-size:12px;font-weight:500;font-style:normal;margin-top:2px;color:rgba(255,255,255,0.85);}
+.work-overlay{display:none;}
 
 /* FOOTER */
 footer{border-top:1px solid var(--border);padding:28px 40px;display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;}
